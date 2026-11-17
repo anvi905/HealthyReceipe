@@ -1,69 +1,128 @@
+import RecipeCard from "@/components/RecipeCard";
+import { RecipeData } from "@/data/recipes";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-green-50">
+      {/* Hero Section */}
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden rounded-3xl bg-[#eaf3e8] px-6 py-12 md:px-12 md:py-16">
+
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+
+          {/* Left Content */}
+          <div className="max-w-xl">
+
+            <span className="inline-block rounded-full bg-white px-4 py-2 text-sm font-semibold text-green-800">
+              🌿 Healthy Food, Happy Life
+            </span>
+
+            <h1 className="mt-6 text-4xl md:text-6xl font-bold leading-tight text-[#244b32]">
+              Discover Delicious
+              <span className="block text-green-700">
+                & Healthy Recipes
+              </span>
+            </h1>
+
+            <p className="mt-6 text-base md:text-lg leading-8 text-gray-600">
+              Explore traditional Indian recipes, discover new flavours
+              and make every meal healthy and special.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+
+              <Link
+                href="/recipes"
+                className="rounded-full bg-green-700 px-7 py-3.5 text-white font-semibold shadow-md hover:bg-green-800 transition"
+              >
+                Explore Recipes →
+              </Link>
+
+              <Link
+                href="#popular-recipes"
+                className="rounded-full border border-green-700 px-7 py-3.5 text-green-800 font-semibold hover:bg-green-100 transition"
+              >
+                Popular Recipes
+              </Link>
+
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-8">
+
+              <div>
+                <p className="text-2xl font-bold text-green-800">Fresh</p>
+                <p className="text-sm text-gray-600">Ingredients</p>
+              </div>
+
+              <div>
+                <p className="text-2xl font-bold text-green-800">Easy</p>
+                <p className="text-sm text-gray-600">Cooking Steps</p>
+              </div>
+
+              <div>
+                <p className="text-2xl font-bold text-green-800">Tasty</p>
+                <p className="text-sm text-gray-600">Indian Recipes</p>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Right Image */}
+          <div className="relative">
+
+            <div className="absolute -inset-3 rounded-3xl bg-green-200/60 rotate-3"></div>
+
+            <div className="relative h-72 md:h-[420px] overflow-hidden rounded-3xl shadow-xl">
+
+              <Image
+                src="/images/homefood.png"
+                alt="Fresh and delicious Indian food"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+
+            </div>
+
+            <div className="absolute -bottom-5 -left-3 md:-left-8 rounded-2xl bg-white px-5 py-4 shadow-lg">
+              <p className="text-sm font-bold text-green-800">
+                Made with Love ❤️
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                Homemade Goodness
+              </p>
+            </div>
+
+          </div>
+
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+      </section>
+
+      {/* Popular Recipes */}
+      <section id="popular-recipes" className="px-6 py-10">
+
+        <h2 className="mb-8 text-2xl font-bold text-green-800">
+          Popular Recipes
+        </h2>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {RecipeData.map((recipe, index) => (
+            <RecipeCard
+              key={index}
+              slug={recipe.slug}
+              name={recipe.name}
+              region={recipe.region}
+              foodType={recipe.foodType}
+              image={recipe.image}
+              from="home"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
