@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/next";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -26,7 +27,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col"><Suspense fallback={<div className="h-20 bg-white" />}>
         <Navbar />
-      </Suspense>{children}</body>
+      </Suspense>
+      {children}
+      <Analytics />
+      </body>
     </html>
   );
 }
