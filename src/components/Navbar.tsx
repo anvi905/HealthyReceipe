@@ -52,6 +52,9 @@ export default function Navbar() {
                     <Link href="/about" className={linkStyle("/about")}>
                         About
                     </Link>
+                     <Link href="/contact" className={linkStyle("/contact")}>
+                        Contact Us
+                    </Link>
                 </div>
 
                 {/* Desktop Button */}
